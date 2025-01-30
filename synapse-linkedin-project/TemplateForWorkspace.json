@@ -1,0 +1,490 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"type": "string",
+			"metadata": "Workspace name",
+			"defaultValue": "synapse-linkedin-project"
+		},
+		"synapse-linkedin-project-WorkspaceDefaultSqlServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'synapse-linkedin-project-WorkspaceDefaultSqlServer'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapse-linkedin-project.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"LinkedinAzureKeyVault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://linkedinkv.vault.azure.net/"
+		},
+		"synapse-linkedin-project-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://salinkedindata.dfs.core.windows.net"
+		}
+	},
+	"variables": {
+		"workspaceId": "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('workspaceName'), '/LinkedinAzureKeyVault')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('LinkedinAzureKeyVault_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/synapse-linkedin-project-WorkspaceDefaultSqlServer')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"parameters": {
+					"DBName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('synapse-linkedin-project-WorkspaceDefaultSqlServer_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/synapse-linkedin-project-WorkspaceDefaultStorage')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('synapse-linkedin-project-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/AutoResolveIntegrationRuntime')]",
+			"type": "Microsoft.Synapse/workspaces/integrationRuntimes",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "AutoResolve",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/WorkspaceSystemIdentity')]",
+			"type": "Microsoft.Synapse/workspaces/credentials",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"type": "ManagedIdentity",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/linkedin-api-call')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"description": "This notebook calls the api Fresh LinkedIn Profile Data to retrieve jobs data.",
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "splink",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 2,
+					"runAsWorkspaceSystemIdentity": false,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2",
+						"spark.autotune.trackingId": "8afbfcde-7c1b-4699-be66-576cecc83d1b"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "python"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/fb7151e9-9012-4b51-990a-16b26a37bf06/resourceGroups/synapse_asg_link/providers/Microsoft.Synapse/workspaces/synapse-linkedin-project/bigDataPools/splink",
+						"name": "splink",
+						"type": "Spark",
+						"endpoint": "https://synapse-linkedin-project.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/splink",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.4",
+						"nodeCount": 3,
+						"cores": 4,
+						"memory": 28,
+						"automaticScaleJobs": false
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "markdown",
+						"metadata": {
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"https://rapidapi.com/freshdata-freshdata-default/api/fresh-linkedin-profile-data"
+						]
+					},
+					{
+						"cell_type": "code",
+						"metadata": {},
+						"source": [
+							"# Libraries to import\r\n",
+							"import requests\r\n",
+							"import pyspark.sql.functions as F\r\n",
+							"from datetime import datetime\r\n",
+							"from notebookutils import mssparkutils"
+						],
+						"outputs": [],
+						"execution_count": 1
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# Call the API to retrieve jobs information\r\n",
+							"\r\n",
+							"url = \"https://fresh-linkedin-profile-data.p.rapidapi.com/search-jobs\"\r\n",
+							"\r\n",
+							"payload = {\r\n",
+							"\t\"keywords\": \"data engineer, data engineering\",\r\n",
+							"\t\"geo_code\": 105646813,\r\n",
+							"\t\"date_posted\": \"Past 24 hours\",\r\n",
+							"\t\"experience_levels\": [],\r\n",
+							"\t\"company_ids\": [],\r\n",
+							"\t\"title_ids\": [],\r\n",
+							"\t\"onsite_remotes\": [],\r\n",
+							"\t\"functions\": [],\r\n",
+							"\t\"industries\": [],\r\n",
+							"\t\"job_types\": [],\r\n",
+							"\t\"sort_by\": \"Most recent\",\r\n",
+							"\t\"easy_apply\": \"false\",\r\n",
+							"\t\"under_10_applicants\": \"false\",\r\n",
+							"\t\"start\": 0,\r\n",
+							"    \"limit\": 50,\r\n",
+							"    \"page\": 1,\r\n",
+							"}\r\n",
+							"\r\n",
+							"api_key = mssparkutils.credentials.getSecret(\"linkedinkv\", \"api-key\")\r\n",
+							"api_host = mssparkutils.credentials.getSecret(\"linkedinkv\", \"api-host\")\r\n",
+							"\r\n",
+							"headers = {\r\n",
+							"\t\"x-rapidapi-key\": api_key,\r\n",
+							"\t\"x-rapidapi-host\": api_host,\r\n",
+							"\t\"Content-Type\": \"application/json\"\r\n",
+							"}\r\n",
+							"\r\n",
+							"response = requests.post(url, json=payload, headers=headers)"
+						],
+						"outputs": [],
+						"execution_count": 2
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# Retrieve the data to store it in out adls gen 2\r\n",
+							"\r\n",
+							"if response.status_code == 200:\r\n",
+							"    data = response.json()\r\n",
+							"    jobs_data = data[\"data\"]\r\n",
+							"    df_linkedin = spark.createDataFrame(jobs_data)\r\n",
+							"    df_linkedin = df_linkedin.withColumn(\"load_date\", F.date_format(F.current_date(), \"dd-MM-yy\"))\r\n",
+							"else:\r\n",
+							"    print(f\"Error in the API call: {response.status_code} - {response.text}\")"
+						],
+						"outputs": [],
+						"execution_count": 3
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# ingest data into the adls gen 2 as parquet files\r\n",
+							"\r\n",
+							"adls_path = \"abfss://linkedin-data@salinkedindata.dfs.core.windows.net/data\"\r\n",
+							"df_linkedin.write.format(\"delta\").mode(\"overwrite\").partitionBy(\"load_date\").save(adls_path)"
+						],
+						"outputs": [],
+						"execution_count": 4
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							},
+							"collapsed": false
+						},
+						"source": [
+							"# Visulaise the df\r\n",
+							"\r\n",
+							"display(df_linkedin)"
+						],
+						"outputs": [],
+						"execution_count": 5
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/staging-table')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "splink",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 2,
+					"runAsWorkspaceSystemIdentity": false,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2",
+						"spark.autotune.trackingId": "57d01d7b-159f-4b00-9d3f-cce46a1e1dba"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "python"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/fb7151e9-9012-4b51-990a-16b26a37bf06/resourceGroups/synapse_asg_link/providers/Microsoft.Synapse/workspaces/synapse-linkedin-project/bigDataPools/splink",
+						"name": "splink",
+						"type": "Spark",
+						"endpoint": "https://synapse-linkedin-project.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/splink",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.4",
+						"nodeCount": 3,
+						"cores": 4,
+						"memory": 28,
+						"automaticScaleJobs": false
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# libraries\r\n",
+							"\r\n",
+							"from delta.tables import DeltaTable\r\n",
+							"from pyspark.sql.utils import AnalysisException\r\n",
+							"from notebookutils import mssparkutils"
+						],
+						"outputs": [],
+						"execution_count": 1
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"collapsed": false
+						},
+						"source": [
+							"# create and inset new data in a spark pool table\r\n",
+							"\r\n",
+							"table_name = \"landing_linkedin_jobs\"\r\n",
+							"\r\n",
+							"adls_name = mssparkutils.credentials.getSecret(\"linkedinkv\", \"adls-name\")\r\n",
+							"adls_bucket = mssparkutils.credentials.getSecret(\"linkedinkv\", \"adls-bucket\")\r\n",
+							"\r\n",
+							"file_path = f\"abfss://{adls_bucket}@{adls_name}.dfs.core.windows.net/data\"\r\n",
+							"\r\n",
+							"\r\n",
+							"df_link = spark.read.format(\"delta\").load(file_path)\r\n",
+							"\r\n",
+							"# Verify if the table exists, create otherwise.\r\n",
+							"\r\n",
+							"try:\r\n",
+							"    staging_table_name = DeltaTable.forName(spark, table_name)\r\n",
+							"    staging_natural_name = staging_table_name.detail().collect()[0].name.split(\".\")[-1]\r\n",
+							"    print(\"Actualizando tabla...\")\r\n",
+							"\r\n",
+							"    # Actualizamos tabla mediante un merge\r\n",
+							"    staging_table_name.alias(\"sta\")\\\r\n",
+							"                      .merge(df_link.alias(\"new_data\"), \"sta.job_urn = new_data.job_urn\")\\\r\n",
+							"                      .whenMatchedUpdateAll()\\\r\n",
+							"                      .whenNotMatchedInsertAll()\\\r\n",
+							"                      .execute()\r\n",
+							"\r\n",
+							"    print(f\"Tabla {staging_natural_name} actualizada.\")\r\n",
+							"except AnalysisException:\r\n",
+							"    print(\"Creando tabla...\")\r\n",
+							"    df_link.write.format(\"delta\").mode(\"overwrite\")\\\r\n",
+							"                                 .option(\"overwriteSchema\", \"true\")\\\r\n",
+							"                                 .saveAsTable(table_name)\r\n",
+							"    print(f\"Tabla {table_name} creada.\")\r\n",
+							""
+						],
+						"outputs": [],
+						"execution_count": 2
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							},
+							"collapsed": false
+						},
+						"source": [
+							"df = spark.sql(\"SELECT * FROM landing_linkedin_jobs\")\r\n",
+							"display(df)"
+						],
+						"outputs": [],
+						"execution_count": 3
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/splink')]",
+			"type": "Microsoft.Synapse/workspaces/bigDataPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"autoPause": {
+					"enabled": true,
+					"delayInMinutes": 15
+				},
+				"autoScale": {
+					"enabled": false,
+					"maxNodeCount": 3,
+					"minNodeCount": 3
+				},
+				"nodeCount": 3,
+				"nodeSize": "Small",
+				"nodeSizeFamily": "MemoryOptimized",
+				"sparkVersion": "3.4",
+				"isComputeIsolationEnabled": false,
+				"sessionLevelPackagesEnabled": false,
+				"annotations": []
+			},
+			"dependsOn": [],
+			"location": "westeurope"
+		}
+	]
+}
