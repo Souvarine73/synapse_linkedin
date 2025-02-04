@@ -133,16 +133,433 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "8afbfcde-7c1b-4699-be66-576cecc83d1b"
+						"spark.autotune.trackingId": "3c8aa886-a328-411f-b044-ac71bb8ca98d"
 					}
 				},
 				"metadata": {
 					"saveOutput": true,
-					"enableDebugMode": false,
-					"kernelspec": {
-						"name": "synapse_pyspark",
-						"display_name": "python"
+					"synapse_widget": {
+						"version": "0.1",
+						"state": {
+							"cf79f533-4f24-47c4-bb5b-6dc762eec473": {
+								"type": "Synapse.DataFrame",
+								"sync_state": {
+									"table": {
+										"rows": [
+											{
+												"0": "Bluetab, an IBM Company",
+												"1": "https://www.linkedin.com/company/bluetab",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEm3dVsmyehlw/company-logo_200_200/company-logo_200_200/0/1720421058489/bluetab_logo?e=1746057600&v=beta&t=gi4IoFud_eSH-5DBWv0i-c45hTWUmi0MCuVe0DxKmaw",
+												"3": "Data Engineer Confluent Specialist",
+												"4": "https://www.linkedin.com/jobs/view/4138322298",
+												"5": "4138322298",
+												"6": "Spain",
+												"7": "2025-01-30 14:33:42",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Right Balance ®",
+												"1": "https://www.linkedin.com/company/the-right-balance",
+												"2": "https://media.licdn.com/dms/image/v2/C560BAQF5hqw9O5mTMA/company-logo_200_200/company-logo_200_200/0/1630616205692/the_right_balance_logo?e=1746057600&v=beta&t=X9kbNQe5Vfse0L1Y2mFKre9S2KnzogQ4lETJo1OC8tM",
+												"3": "Senior Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4121171205",
+												"5": "4121171205",
+												"6": "EMEA",
+												"7": "2025-01-30 14:10:33",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Innova-tsn",
+												"1": "https://www.linkedin.com/company/innovatsn",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQFXnpZXlQ1IAA/company-logo_200_200/company-logo_200_200/0/1720775692621/innovatsn_logo?e=1746057600&v=beta&t=xRIQY4b_vEod0R8Azi9LlZrbKIF7HfiAjkc2Gadv9Io",
+												"3": "Senior Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4138308992",
+												"5": "4138308992",
+												"6": "Santander, Cantabria, Spain",
+												"7": "2025-01-30 13:28:25",
+												"8": "Hybrid",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Innova-tsn",
+												"1": "https://www.linkedin.com/company/innovatsn",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQFXnpZXlQ1IAA/company-logo_200_200/company-logo_200_200/0/1720775692621/innovatsn_logo?e=1746057600&v=beta&t=xRIQY4b_vEod0R8Azi9LlZrbKIF7HfiAjkc2Gadv9Io",
+												"3": "Senior Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4138312297",
+												"5": "4138312297",
+												"6": "Barcelona, Catalonia, Spain",
+												"7": "2025-01-30 13:26:30",
+												"8": "Hybrid",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "UpcoMinds",
+												"1": "https://www.linkedin.com/company/upcominds",
+												"2": "https://media.licdn.com/dms/image/v2/C4E0BAQHPH5bmuZkxlA/company-logo_200_200/company-logo_200_200/0/1630644452087/upcominds_logo?e=1746057600&v=beta&t=I2r_9hKEmNsQnGd3ADfb7f4VfEmzhelThO64dWuX4x4",
+												"3": "Senior Cloud Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4138966363",
+												"5": "4138966363",
+												"6": "European Union",
+												"7": "2025-01-30 13:26:24",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Clarity AI",
+												"1": "https://www.linkedin.com/company/clarity-ai",
+												"2": "https://media.licdn.com/dms/image/v2/C4E0BAQHJAU7kXCytYw/company-logo_200_200/company-logo_200_200/0/1630630631544/clarity_ai_logo?e=1746057600&v=beta&t=uVJ0N-119O3tBUGmn2a1DimC2Yny353WWQgvOxdZZx0",
+												"3": "Senior Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4076662606",
+												"5": "4076662606",
+												"6": "Canary Islands, Spain",
+												"7": "2025-01-30 13:20:59",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "The Cocktail",
+												"1": "https://www.linkedin.com/company/the-cocktail",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQFFAE329Tljww/company-logo_200_200/company-logo_200_200/0/1704985968919/the_cocktail_logo?e=1746057600&v=beta&t=pdQJdda_QBkAhFvcjVOUvCBvyfHrogHpRmql7hdm0wI",
+												"3": "Azure Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4138309788",
+												"5": "4138309788",
+												"6": "Madrid, Community of Madrid, Spain",
+												"7": "2025-01-30 13:17:26",
+												"8": "Hybrid",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Avanade",
+												"1": "https://www.linkedin.com/company/avanade",
+												"2": "https://media.licdn.com/dms/image/v2/D560BAQGmlDR0g_2XIg/company-logo_200_200/company-logo_200_200/0/1688575032846/avanade_logo?e=1746057600&v=beta&t=b1oVM40KDWZaiVZZs0In-xvlf9StZcRlSiGhI9QPxLQ",
+												"3": "Senior Data Engineer (Azure Data Platform Cloud Services)",
+												"4": "https://www.linkedin.com/jobs/view/4138305428",
+												"5": "4138305428",
+												"6": "Spain",
+												"7": "2025-01-30 12:58:07",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Gyrus",
+												"1": "https://www.linkedin.com/company/gyrus-ds",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQFcloIWv7w6Cw/company-logo_200_200/company-logo_200_200/0/1723038979134/gyrus_ds_logo?e=1746057600&v=beta&t=tu4AQ2PiZLRsd4sbPx8HEPoIVGOg-oxSW7af1adNqkc",
+												"3": "Senior Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4137875192",
+												"5": "4137875192",
+												"6": "Madrid, Community of Madrid, Spain",
+												"7": "2025-01-30 12:25:17",
+												"8": "Hybrid",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "CAST AI",
+												"1": "https://www.linkedin.com/company/cast-ai",
+												"2": "https://media.licdn.com/dms/image/v2/D4E0BAQGG7Hgv7Cd6bw/company-logo_200_200/company-logo_200_200/0/1711959763382/cast_ai_logo?e=1746057600&v=beta&t=DFTNNHPPw16tWEp_Q0CsCcHq6Vbj6X0UERMEjDXF4Cw",
+												"3": "Senior Data Scientist / LLM Engineer - AI Optimizer Team",
+												"4": "https://www.linkedin.com/jobs/view/4138923679",
+												"5": "4138923679",
+												"6": "European Union",
+												"7": "2025-01-30 12:08:29",
+												"8": "Remote",
+												"9": "€6,000/month - €8,000/month",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Experis España",
+												"1": "https://www.linkedin.com/company/experis-espana",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQHDxgWWzvCC9A/company-logo_200_200/company-logo_200_200/0/1733934277738/experis_espana_logo?e=1746057600&v=beta&t=lJGNDZlpuhAb2NzMz8yYTDQSzwH6sQY39ArIT2pXsXY",
+												"3": "DATA ENGINEER y DATA GOVERNANCE - Inglés avanzado (H/M/X)",
+												"4": "https://www.linkedin.com/jobs/view/4136745913",
+												"5": "4136745913",
+												"6": "Spain",
+												"7": "2025-01-30 10:51:03",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Imploy",
+												"1": "https://www.linkedin.com/company/imployplatform",
+												"2": "https://media.licdn.com/dms/image/v2/C4D0BAQF7Jf1jCED3Hg/company-logo_200_200/company-logo_200_200/0/1674567692805?e=1746057600&v=beta&t=7o6urgM2FYWzKFu8VHRWmGGZuL2XIZsPZpo_3U26RWQ",
+												"3": "Machine Learning Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4138910835",
+												"5": "4138910835",
+												"6": "EMEA",
+												"7": "2025-01-30 10:30:05",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Binaia",
+												"1": "https://www.linkedin.com/company/binaia",
+												"2": "https://media.licdn.com/dms/image/v2/C4D0BAQHNlURooRGoTw/company-logo_200_200/company-logo_200_200/0/1679915449896/nxtgeneducation_logo?e=1746057600&v=beta&t=-jCwi5GNDxwJTC7v5eU_ajHDAeJRsTf4apn4N7DR1SI",
+												"3": "Senior Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4138909421",
+												"5": "4138909421",
+												"6": "Spain",
+												"7": "2025-01-30 10:18:10",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Capitole",
+												"1": "https://www.linkedin.com/company/capitole-consulting",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEHCurbikEs4g/company-logo_200_200/company-logo_200_200/0/1686905560634/capitole_consulting_logo?e=1746057600&v=beta&t=D5V_GjttnePaJMJtUvN8p5gWOUmaYgPkkfIyZkW4xUw",
+												"3": "DevOps / Data Engineer - Hybrid ALICANTE",
+												"4": "https://www.linkedin.com/jobs/view/4137888616",
+												"5": "4137888616",
+												"6": "Valencian Community, Spain",
+												"7": "2025-01-30 10:06:36",
+												"8": "Hybrid",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "ClearPeaks",
+												"1": "https://www.linkedin.com/company/clearpeaks",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQHoFTBmN7W8yA/company-logo_200_200/company-logo_200_200/0/1688370163306/clearpeaks_logo?e=1746057600&v=beta&t=s27zv-5nYsraDXMS8_x-u0O2fPQsK3OdvEp0bl_tWmo",
+												"3": "Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4081153982",
+												"5": "4081153982",
+												"6": "Barcelona, Catalonia, Spain",
+												"7": "2025-01-30 09:55:23",
+												"8": "Hybrid",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Expedia Group",
+												"1": "https://www.linkedin.com/company/expedia",
+												"2": "https://media.licdn.com/dms/image/v2/C560BAQGCJ4PG0WVumA/company-logo_200_200/company-logo_200_200/0/1630646301487/expedia_logo?e=1746057600&v=beta&t=i-NNWHhNsOMM176qQvERExhFG4Ts_TBmGBCfqSFkCzg",
+												"3": "Data Engineer II",
+												"4": "https://www.linkedin.com/jobs/view/4130991821",
+												"5": "4130991821",
+												"6": "Madrid, Community of Madrid, Spain",
+												"7": "2025-01-30 09:20:58",
+												"8": "On-site",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "AgileEngine",
+												"1": "https://www.linkedin.com/company/agileengine",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEV7XPrwqjYLg/company-logo_200_200/company-logo_200_200/0/1693840967446/agileengine_logo?e=1746057600&v=beta&t=O2dhC0uYdxPpxBVNqtUpfAjaDgkg_1S-J-lfOvbthNo",
+												"3": "Data Engineer Python (Senior) ID27950",
+												"4": "https://www.linkedin.com/jobs/view/4137876955",
+												"5": "4137876955",
+												"6": "Barcelona, Catalonia, Spain",
+												"7": "2025-01-30 09:02:02",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "AgileEngine",
+												"1": "https://www.linkedin.com/company/agileengine",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEV7XPrwqjYLg/company-logo_200_200/company-logo_200_200/0/1693840967446/agileengine_logo?e=1746057600&v=beta&t=O2dhC0uYdxPpxBVNqtUpfAjaDgkg_1S-J-lfOvbthNo",
+												"3": "Data Engineer Python (Senior) ID27950",
+												"4": "https://www.linkedin.com/jobs/view/4137882357",
+												"5": "4137882357",
+												"6": "Valencia, Valencian Community, Spain",
+												"7": "2025-01-30 09:02:02",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "AgileEngine",
+												"1": "https://www.linkedin.com/company/agileengine",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEV7XPrwqjYLg/company-logo_200_200/company-logo_200_200/0/1693840967446/agileengine_logo?e=1746057600&v=beta&t=O2dhC0uYdxPpxBVNqtUpfAjaDgkg_1S-J-lfOvbthNo",
+												"3": "Data Engineer Python (Senior) ID27950",
+												"4": "https://www.linkedin.com/jobs/view/4137878711",
+												"5": "4137878711",
+												"6": "Madrid, Community of Madrid, Spain",
+												"7": "2025-01-30 09:02:02",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "AgileEngine",
+												"1": "https://www.linkedin.com/company/agileengine",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEV7XPrwqjYLg/company-logo_200_200/company-logo_200_200/0/1693840967446/agileengine_logo?e=1746057600&v=beta&t=O2dhC0uYdxPpxBVNqtUpfAjaDgkg_1S-J-lfOvbthNo",
+												"3": "Data Engineer Python (Middle) ID27950",
+												"4": "https://www.linkedin.com/jobs/view/4137880666",
+												"5": "4137880666",
+												"6": "Madrid, Community of Madrid, Spain",
+												"7": "2025-01-30 09:02:00",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "BME | Bolsas y Mercados Españoles",
+												"1": "https://www.linkedin.com/company/bolsabme",
+												"2": "https://media.licdn.com/dms/image/v2/C4E0BAQF2loDWvghvEg/company-logo_200_200/company-logo_200_200/0/1670929206194/grupo_bme_logo?e=1746057600&v=beta&t=6vol89oM6mInXsrqVlZT0AQUnPhwViGPkLqaWDl4rW0",
+												"3": "Senior Cloud Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4137876841",
+												"5": "4137876841",
+												"6": "Madrid, Community of Madrid, Spain",
+												"7": "2025-01-30 09:00:58",
+												"8": "Madrid, Community of Madrid, Spain",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Optimissa",
+												"1": "https://www.linkedin.com/company/optimissa",
+												"2": "https://media.licdn.com/dms/image/v2/C4E0BAQEZH3AYDCqYMg/company-logo_200_200/company-logo_200_200/0/1657796293032/optimissa_logo?e=1746057600&v=beta&t=WEB5zNwv1376RV2MvJSVR24mqNdWAcK2EQfCXZDfgEQ",
+												"3": "Data Engineer | Teletrabajo",
+												"4": "https://www.linkedin.com/jobs/view/4137857753",
+												"5": "4137857753",
+												"6": "Spain",
+												"7": "2025-01-30 08:37:45",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "AARON FORMACIÓN y CONSULTORÍA",
+												"1": "https://www.linkedin.com/company/aaron-formaci-n-y-consultoria",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEeP48EDL5I0g/company-logo_200_200/company-logo_200_200/0/1721043171620/aaron_formaci_n_y_consultoria_logo?e=1746057600&v=beta&t=ShKsrL_0wj-hjq3bAj6pir1RxYzTA2hV0wuuQeRaCgw",
+												"3": "Data Engineer / Google Cloud / 100% Teletrabajo",
+												"4": "https://www.linkedin.com/jobs/view/4137844367",
+												"5": "4137844367",
+												"6": "Spain",
+												"7": "2025-01-30 08:23:04",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Krell",
+												"1": "https://www.linkedin.com/company/krellconsulting",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQGwpqR_ugWujw/company-logo_200_200/company-logo_200_200/0/1729162700438/krellconsulting_logo?e=1746057600&v=beta&t=QJgj80jNF2kWE3zQISM_KtpXs_6Ws3zLYN8VAJQzgxI",
+												"3": "Senior Data Engineer Cloud GCP/ Inglés B2/ Remoto",
+												"4": "https://www.linkedin.com/jobs/view/4138754361",
+												"5": "4138754361",
+												"6": "Spain",
+												"7": "2025-01-30 07:40:57",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											},
+											{
+												"0": "Bluetab, an IBM Company",
+												"1": "https://www.linkedin.com/company/bluetab",
+												"2": "https://media.licdn.com/dms/image/v2/D4D0BAQEm3dVsmyehlw/company-logo_200_200/company-logo_200_200/0/1720421058489/bluetab_logo?e=1746057600&v=beta&t=gi4IoFud_eSH-5DBWv0i-c45hTWUmi0MCuVe0DxKmaw",
+												"3": "Senior Azure Databricks Data Engineer",
+												"4": "https://www.linkedin.com/jobs/view/4113605209",
+												"5": "4113605209",
+												"6": "Spain",
+												"7": "2025-01-30 07:22:08",
+												"8": "Remote",
+												"9": "",
+												"10": "30-01-25"
+											}
+										],
+										"schema": [
+											{
+												"key": "0",
+												"name": "company",
+												"type": "string"
+											},
+											{
+												"key": "1",
+												"name": "company_linkedin_url",
+												"type": "string"
+											},
+											{
+												"key": "2",
+												"name": "company_logo",
+												"type": "string"
+											},
+											{
+												"key": "3",
+												"name": "job_title",
+												"type": "string"
+											},
+											{
+												"key": "4",
+												"name": "job_url",
+												"type": "string"
+											},
+											{
+												"key": "5",
+												"name": "job_urn",
+												"type": "string"
+											},
+											{
+												"key": "6",
+												"name": "location",
+												"type": "string"
+											},
+											{
+												"key": "7",
+												"name": "posted_time",
+												"type": "string"
+											},
+											{
+												"key": "8",
+												"name": "remote",
+												"type": "string"
+											},
+											{
+												"key": "9",
+												"name": "salary",
+												"type": "string"
+											},
+											{
+												"key": "10",
+												"name": "load_date",
+												"type": "string"
+											}
+										],
+										"truncated": false
+									},
+									"isSummary": false,
+									"language": "scala",
+									"wranglerEntryContext": {
+										"candidateVariableNames": [
+											"df_linkedin"
+										],
+										"dataframeType": "pyspark"
+									}
+								},
+								"persist_state": {
+									"view": {
+										"type": "details",
+										"chartOptions": {
+											"chartType": "bar",
+											"aggregationType": "count",
+											"categoryFieldKeys": [
+												"0"
+											],
+											"seriesFieldKeys": [
+												"0"
+											],
+											"isStacked": false
+										}
+									}
+								}
+							}
+						}
 					},
+					"enableDebugMode": false,
 					"language_info": {
 						"name": "python"
 					},
@@ -153,13 +570,14 @@
 						"endpoint": "https://synapse-linkedin-project.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/splink",
 						"auth": {
 							"type": "AAD",
-							"authResource": "https://dev.azuresynapse.net"
+							"authResource": "https://dev.azuresynapse.net",
+							"authHeader": null
 						},
 						"sparkVersion": "3.4",
 						"nodeCount": 3,
 						"cores": 4,
 						"memory": 28,
-						"automaticScaleJobs": false
+						"extraHeader": null
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -179,7 +597,6 @@
 					},
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"# Libraries to import\r\n",
 							"import requests\r\n",
@@ -338,7 +755,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "57d01d7b-159f-4b00-9d3f-cce46a1e1dba"
+						"spark.autotune.trackingId": "12315912-7788-464e-9e94-548820b25964"
 					}
 				},
 				"metadata": {
@@ -363,8 +780,7 @@
 						"sparkVersion": "3.4",
 						"nodeCount": 3,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": false
+						"memory": 28
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -485,6 +901,89 @@
 			},
 			"dependsOn": [],
 			"location": "westeurope"
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/api-call-ingest-stage-table-linkedin')]",
+			"type": "Microsoft.Synapse/workspaces/pipelines",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"activities": [
+					{
+						"name": "api-call",
+						"type": "SynapseNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebook": {
+								"referenceName": "linkedin-api-call",
+								"type": "NotebookReference"
+							},
+							"snapshot": true,
+							"sparkPool": {
+								"referenceName": "splink",
+								"type": "BigDataPoolReference"
+							},
+							"executorSize": "Small",
+							"conf": {
+								"spark.dynamicAllocation.enabled": false
+							},
+							"driverSize": "Small"
+						}
+					},
+					{
+						"name": "staging-table",
+						"type": "SynapseNotebook",
+						"dependsOn": [
+							{
+								"activity": "api-call",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebook": {
+								"referenceName": "staging-table",
+								"type": "NotebookReference"
+							},
+							"snapshot": true,
+							"sparkPool": {
+								"referenceName": "splink",
+								"type": "BigDataPoolReference"
+							},
+							"executorSize": "Small",
+							"conf": {
+								"spark.dynamicAllocation.enabled": false
+							},
+							"driverSize": "Small"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/notebooks/linkedin-api-call')]",
+				"[concat(variables('workspaceId'), '/bigDataPools/splink')]",
+				"[concat(variables('workspaceId'), '/notebooks/staging-table')]"
+			]
 		}
 	]
 }
