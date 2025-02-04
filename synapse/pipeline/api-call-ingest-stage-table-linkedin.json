@@ -1,0 +1,73 @@
+{
+	"name": "api-call-ingest-stage-table-linkedin",
+	"properties": {
+		"activities": [
+			{
+				"name": "api-call",
+				"type": "SynapseNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "linkedin-api-call",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "splink",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"conf": {
+						"spark.dynamicAllocation.enabled": false
+					},
+					"driverSize": "Small"
+				}
+			},
+			{
+				"name": "staging-table",
+				"type": "SynapseNotebook",
+				"dependsOn": [
+					{
+						"activity": "api-call",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "staging-table",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "splink",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"conf": {
+						"spark.dynamicAllocation.enabled": false
+					},
+					"driverSize": "Small"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
