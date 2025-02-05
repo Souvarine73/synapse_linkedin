@@ -24,11 +24,9 @@
 						"referenceName": "splink",
 						"type": "BigDataPoolReference"
 					},
-					"executorSize": "Small",
 					"conf": {
 						"spark.dynamicAllocation.enabled": false
-					},
-					"driverSize": "Small"
+					}
 				}
 			},
 			{
@@ -60,11 +58,9 @@
 						"referenceName": "splink",
 						"type": "BigDataPoolReference"
 					},
-					"executorSize": "Small",
 					"conf": {
 						"spark.dynamicAllocation.enabled": false
-					},
-					"driverSize": "Small"
+					}
 				}
 			}
 		],
